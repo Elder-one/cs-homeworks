@@ -44,7 +44,7 @@ int[] getArrayFromNumber(int number)
 bool isPalindrome(int number)
 {
     // Проверяет, является ли пятизначное число
-    // палиндромом (Пришлось узнать про тип boolean)
+    // палиндромом
     int[] array = getArrayFromNumber(number);
     if(array[0] != array[4]) return false;
     if(array[1] != array[3]) return false;
