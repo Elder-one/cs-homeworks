@@ -22,8 +22,8 @@ void PrintMatrixInt(int[,] matrix)
     {
         for(int j = 0; j < cols; j++)
         {
-            if(j < cols-1) Console.Write($"{matrix[i,j]} ");
-            else Console.Write($"{matrix[i,j]}");
+            if(j < cols-1) Console.Write($"{matrix[i,j], 4} ");
+            else Console.Write($"{matrix[i,j], 4}");
         }
         Console.WriteLine();
     }
