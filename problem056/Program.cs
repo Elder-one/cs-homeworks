@@ -43,22 +43,39 @@ int[] GetRowFromMatrix(int[,] matrix, int rowIndex)
 }
 
 
-void InsertRowInMatrix(int[,] matrix,
-                       int[] row,
-                       int rowIndex)
+int Sum(int[] array)
 {
-    int cols = matrix.GetLength(1);
-    for(int i = 0; i < cols; i++)
+    int size = array.Length;
+    int sum = 0;
+    for(int i = 0; i < size; i++)
     {
-        matrix[rowIndex, i] = row[i];
+        sum += array[i];
     }
+    return sum;
 }
 
 
-void SwapRows(int[,] matrix, int index1, int index2)
+int FindMinRow(int[,] matrix)
 {
-    row1 = GetRowFromMatrix(matrix, index1);
-    row2 = GetRowFromMatrix(matrix, index2);
-    InsertRowInMatrix(matrix, row1, index2);
-    InsertRowInMatrix(matrix, row2, index1);
+    int rows = matrix.GetLength(0);
+    int imin = 0;
+    int[] row = GetRowFromMatrix(matrix, 0);
+    int minSum = Sum(row);
+    for(int i = 0; i < rows; i++)
+    {
+        int[] currentRow = GetRowFromMatrix(matrix, i);
+        int sum = Sum(currentRow);
+        if(sum < minSum)
+        {
+            minSum = sum;
+            imin = i;
+        }
+    }
+    return imin;
 }
+
+
+int[,] matr = GetMatrixRndInt(5, 6, -20, 20);
+PrintMatrixInt(matr);
+int minRowPosition = FindMinRow(matr) + 1;
+Console.WriteLine($"Row {minRowPosition} has the minimum sum of the elements");
